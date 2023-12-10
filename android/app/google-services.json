@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "572831864629",
+    "project_id": "segundo-parcial-c5ef1",
+    "storage_bucket": "segundo-parcial-c5ef1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:572831864629:android:2450da6a90fc233432de7c",
+        "android_client_info": {
+          "package_name": "com.example"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDKDKOUshrCwD1ErKNoLyCUf-cwWU_pMnk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:572831864629:android:76b36498c05acf7732de7c",
+        "android_client_info": {
+          "package_name": "com.example.finalapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDKDKOUshrCwD1ErKNoLyCUf-cwWU_pMnk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
