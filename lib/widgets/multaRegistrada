@@ -1,0 +1,38 @@
+// lib/pages/mapa_multas_page.dart
+
+import 'package:flutter/material.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
+
+class MapaMultasPage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Mapa de Multas'),
+      ),
+      body: GoogleMap(
+        initialCameraPosition: CameraPosition(
+          target: LatLng(37.7749, -122.4194), // Latitud y longitud inicial
+          zoom: 12,
+        ),
+        markers: _getMarkers(), // Función para obtener los marcadores de multas
+      ),
+    );
+  }
+
+  Set<Marker> _getMarkers() {
+    // Aquí recuperas los datos de la base de datos y creas los marcadores
+    // Puedes usar datos almacenados en Firebase Firestore
+    return Set<Marker>.from([
+      Marker(
+        markerId: MarkerId('1'),
+        position: LatLng(37.7749, -122.4194),
+        infoWindow: InfoWindow(
+          title: 'Multa 1',
+          snippet: 'Detalles de la multa 1',
+        ),
+      ),
+      // Agrega más marcadores según las multas registradas
+    ]);
+  }
+}
