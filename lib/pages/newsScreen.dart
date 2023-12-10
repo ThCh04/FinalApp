@@ -1,6 +1,6 @@
+import 'package:finalapp/widgets/mainDrawer_widget.dart';
 import 'package:flutter/material.dart';
-import 'api_service.dart';
-import 'NewsList.dart';
+import 'package:finalapp/services/newsApi_service.dart';
 
 class NewsScreen extends StatefulWidget {
   @override
@@ -20,6 +20,7 @@ class _NewsScreenState extends State<NewsScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: mainDrawer(),
       appBar: AppBar(
         title: Text('Noticias Digeset'),
       ),
@@ -47,13 +48,38 @@ class _NewsScreenState extends State<NewsScreen> {
   }
 }
 
-void main() => runApp(MyApp());
+class NewsList extends StatelessWidget {
+  final List<Map<String, dynamic>> newsList;
 
-class MyApp extends StatelessWidget {
+  NewsList(this.newsList);
+
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: NewsScreen(),
+    return ListView.builder(
+      itemCount: newsList.length,
+      itemBuilder: (context, index) {
+        return NewsCard(newsList[index]);
+      },
+    );
+  }
+}
+
+class NewsCard extends StatelessWidget {
+  final Map<String, dynamic> news;
+
+  NewsCard(this.news);
+
+  @override
+  Widget build(BuildContext context) {
+    return Card(
+      margin: EdgeInsets.all(8.0),
+      child: ListTile(
+        title: Text(news['title']['rendered']),
+        subtitle: Text(news['excerpt']['rendered']),
+        onTap: () {
+          // Lógica para manejar la interacción con la noticia
+        },
+      ),
     );
   }
 }
