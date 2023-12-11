@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:finalapp/widgets/mainDrawer_widget.dart';
 import 'package:finalapp/models/multa.dart';
 
 class MultasRegistradasScreen extends StatefulWidget {
   @override
-  _MultasRegistradasScreenState createState() =>
-      _MultasRegistradasScreenState();
+  _MultasRegistradasScreenState createState() => _MultasRegistradasScreenState();
 }
 
 class _MultasRegistradasScreenState extends State<MultasRegistradasScreen> {
@@ -67,6 +67,7 @@ class DetallesMultaScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: mainDrawer(context),
       appBar: AppBar(
         title: Text('Detalles de Multa'),
       ),
@@ -75,6 +76,7 @@ class DetallesMultaScreen extends StatelessWidget {
         children: [
           Text('Nombre: ${multa.nombre}'),
           Text('Motivo: ${multa.motivo}'),
+          // Agrega más detalles según sea necesario
         ],
       ),
     );
