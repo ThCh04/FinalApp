@@ -14,3 +14,17 @@ Future<DocumentSnapshot?> getDocumentByTitle(String title) async {
     return null;
   }
 }
+
+Future<DocumentSnapshot?> getDriverByTitle(String title) async {
+  QuerySnapshot querySnapshot = await getDb()
+      .collection("Drivers")
+      .where("drivers_license", isEqualTo: title)
+      .limit(1)
+      .get();
+
+  if (querySnapshot.docs.isNotEmpty) {
+    return querySnapshot.docs.first;
+  } else {
+    return null;
+  }
+}
