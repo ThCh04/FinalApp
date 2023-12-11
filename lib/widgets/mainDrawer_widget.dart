@@ -43,7 +43,7 @@ Widget mainDrawer(BuildContext context){
            ),
            TextButton(
                onPressed: (){
-
+                 Navigator.of(context).pushReplacementNamed('/fineHistory');
                },
                child: const  Text('Multas Registradas')
            ),

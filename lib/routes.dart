@@ -12,7 +12,7 @@ import 'package:path/path.dart';
 
 Map<String, WidgetBuilder> routesList = {
     "/login": (context) =>  const LoginView(),
-    "/multas": (context) => MultasRegistradasScreen(),
+    "/fineHistory": (context) => MultasRegistradasScreen(),
     "/mapa": (context) => MapaMultasScreen(),
     "/news": (context) => NewsScreen(),
     "/fines": (context) => const FinesPage(),

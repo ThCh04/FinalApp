@@ -168,7 +168,8 @@ class _FinesPageState extends State<FinesPage>{
                       onPressed: () async {
                         await submit(idCardController.text, plateController.text, image_upload,
                             descController.text, latController.text, lonController.text, dateController.text,
-                            hourController.text);
+                            hourController.text).then((value) => Navigator.of(context).pushReplacementNamed('/fines'));
+                        
                       },
                       child: const Text('Multar'),
 
