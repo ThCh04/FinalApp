@@ -1,4 +1,5 @@
 import 'package:finalapp/pages/login_page.dart';
+import 'package:finalapp/routes.dart';
 import 'package:finalapp/services/firebase/firebase_service.dart';
 import 'package:flutter/material.dart';
 
@@ -11,6 +12,10 @@ void main() async{
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return const LoginView();
+    return  MaterialApp(
+      debugShowCheckedModeBanner: false,
+      routes: routesList,
+      home: LoginView(),
+    );
   }
 }

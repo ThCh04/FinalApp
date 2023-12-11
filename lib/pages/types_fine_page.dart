@@ -1,4 +1,5 @@
 // types_fine_page.dart
+import 'package:finalapp/widgets/mainDrawer_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:finalapp/services/types_fine_service.dart';
 
@@ -12,6 +13,7 @@ class TypesFinePage extends StatelessWidget {
     List<TypeFine> typesOfFines = _typesFineService.getTypesOfFines();
 
     return Scaffold(
+      drawer: mainDrawer(context),
       appBar: AppBar(
         title: const Text('Tipos de Multas de Tránsito'),
       ),
