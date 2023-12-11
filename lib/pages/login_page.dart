@@ -3,13 +3,13 @@ import 'package:finalapp/routes.dart';
 class LoginView extends StatelessWidget {
   const LoginView({Key? key}): super(key: key);
 
+
   @override
   Widget build(BuildContext context) {
     TextEditingController userController = TextEditingController();
     TextEditingController passController = TextEditingController();
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      routes: getRoutes(context),
       title: 'Login',
       home: Scaffold(
         body: Center(
@@ -53,7 +53,9 @@ class LoginView extends StatelessWidget {
                    Container(
                      width: MediaQuery.of(context).size.width*0.8,
                      child: Expanded(
-                       child: ElevatedButton(onPressed: (){}, child: const Text('Entrar'))),
+                       child: ElevatedButton(onPressed: (){
+                         Navigator.of(context).pushReplacementNamed('/typesfine');
+                       }, child: const Text('Entrar'))),
                    )]
              )
            ],

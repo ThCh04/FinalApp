@@ -1,11 +1,59 @@
 import 'package:flutter/material.dart';
 
-Widget mainDrawer(){
+Widget mainDrawer(BuildContext context){
   return Drawer(
  child: Column(
    children: [
-     ElevatedButton(onPressed: (){},
-         child: Text('Soy un botón'))
+     SingleChildScrollView(
+       child: ListView(
+         children: [
+           TextButton(
+               onPressed: (){},
+               child: const  Text('Aplicar Multa')
+           ),
+           TextButton(
+               onPressed: (){},
+               child: const  Text('Consultar Conductor')
+           ),
+           TextButton(
+               onPressed: (){},
+               child: const  Text('Consultar Vehículo')
+           ),
+           TextButton(
+               onPressed: (){},
+               child: const  Text('Estado del Clima')
+           ),
+           TextButton(
+               onPressed: (){},
+               child: const  Text('Horóscopo')
+           ),
+           TextButton(
+               onPressed: (){
+                 Navigator.of(context).pushReplacementNamed('/mapa');
+               },
+               child: const  Text('Mapa de Multas')
+           ),
+           TextButton(
+               onPressed: (){
+
+               },
+               child: const  Text('Multas Registradas')
+           ),
+           TextButton(
+               onPressed: (){
+                 Navigator.of(context).pushReplacementNamed('/news');
+               },
+               child: const  Text('Noticias')
+           ),
+           TextButton(
+               onPressed: (){
+                 Navigator.of(context).pushReplacementNamed('/typesfine');
+               },
+               child: const  Text('Tarifario de Multas')
+           ),
+         ],
+       ),
+     )
    ],
  ),
 );
