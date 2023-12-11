@@ -1,4 +1,4 @@
-import 'package:finalapp/pages/login_page.dart';
+import 'package:finalapp/pages/auth/login_page.dart';
 import 'package:finalapp/routes.dart';
 import 'package:finalapp/services/firebase/firebase_service.dart';
 import 'package:flutter/material.dart';

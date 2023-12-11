@@ -4,13 +4,15 @@ Widget mainDrawer(BuildContext context){
   return Drawer(
  child: Column(
    children: [
-     SingleChildScrollView(
-       child: ListView(
-         children: [
-           TextButton(
-               onPressed: (){},
-               child: const  Text('Aplicar Multa')
-           ),
+    SingleChildScrollView(
+         child:
+           Column(
+             children: [
+               const Padding(padding:  EdgeInsets.only(top: 100)),
+               TextButton(
+                   onPressed: (){},
+                   child: const  Text('Aplicar Multa')
+               ),
            TextButton(
                onPressed: (){},
                child: const  Text('Consultar Conductor')
@@ -51,9 +53,8 @@ Widget mainDrawer(BuildContext context){
                },
                child: const  Text('Tarifario de Multas')
            ),
-         ],
-       ),
-     )
+       ]),
+           )
    ],
  ),
 );

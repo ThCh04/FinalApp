@@ -1,4 +1,4 @@
-import 'package:finalapp/pages/login_page.dart';
+import 'package:finalapp/pages/auth/login_page.dart';
 import 'package:finalapp/pages/newsScreen.dart';
 import 'package:finalapp/pages/types_fine_page.dart';
 import 'package:flutter/material.dart';
