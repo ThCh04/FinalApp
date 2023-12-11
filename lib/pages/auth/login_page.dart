@@ -1,3 +1,4 @@
+import 'package:finalapp/services/firebase/auth/login_service.dart';
 import 'package:flutter/material.dart';
 import 'package:finalapp/routes.dart';
 class LoginView extends StatelessWidget {
@@ -8,6 +9,7 @@ class LoginView extends StatelessWidget {
   Widget build(BuildContext context) {
     TextEditingController userController = TextEditingController();
     TextEditingController passController = TextEditingController();
+    bool isLogged = false;
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Login',
@@ -53,8 +55,11 @@ class LoginView extends StatelessWidget {
                    Container(
                      width: MediaQuery.of(context).size.width*0.8,
                      child: Expanded(
-                       child: ElevatedButton(onPressed: (){
-                         Navigator.of(context).pushReplacementNamed('/typesfine');
+                       child: ElevatedButton(onPressed: () async {
+                         isLogged = await Login(userController.text, passController.text);
+                         if(isLogged){
+                           Navigator.of(context).pushReplacementNamed("/mapa");
+                         }
                        }, child: const Text('Entrar'))),
                    )]
              )

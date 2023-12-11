@@ -3,15 +3,25 @@ import 'package:finalapp/widgets/mainDrawer_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:finalapp/services/types_fine_service.dart';
 
-class TypesFinePage extends StatelessWidget {
-  final TypesFineService _typesFineService = TypesFineService();
+class TypesFinePage extends StatefulWidget {
+  const TypesFinePage({Key? key}) : super(key: key);
 
-  TypesFinePage({super.key});
+  @override
+  _TypesFinePageState createState() => _TypesFinePageState();
+}
+
+class _TypesFinePageState extends State<TypesFinePage> {
+  final TypesFineService _typesFineService = TypesFineService();
+  late List<TypeFine> typesOfFines;
+
+  @override
+  void initState() {
+    super.initState();
+    typesOfFines = _typesFineService.getTypesOfFines();
+  }
 
   @override
   Widget build(BuildContext context) {
-    List<TypeFine> typesOfFines = _typesFineService.getTypesOfFines();
-
     return Scaffold(
       drawer: mainDrawer(context),
       appBar: AppBar(

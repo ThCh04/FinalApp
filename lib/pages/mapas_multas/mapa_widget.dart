@@ -1,3 +1,4 @@
+import 'package:finalapp/widgets/mainDrawer_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
@@ -20,6 +21,7 @@ class _MapaMultasScreenState extends State<MapaMultasScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: mainDrawer(context),
       appBar: AppBar(
         title: Text("Mapa de Multas"),
       ),
