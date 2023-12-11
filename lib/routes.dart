@@ -1,4 +1,5 @@
 import 'package:finalapp/pages/auth/login_page.dart';
+import 'package:finalapp/pages/fines/addFines_page.dart';
 import 'package:finalapp/pages/newsScreen.dart';
 import 'package:finalapp/pages/types_fine_page.dart';
 import 'package:flutter/material.dart';
@@ -11,6 +12,7 @@ Map<String, WidgetBuilder> routesList = {
     "/multas": (context) => MultasRegistradasScreen(),
     "/mapa": (context) => MapaMultasScreen(),
     "/news": (context) => NewsScreen(),
-  "/typesfine": (context) => TypesFinePage(),
+    "/fines": (context) => const FinesPage(),
+  "/typesfine": (context) => const TypesFinePage(),
   };
 

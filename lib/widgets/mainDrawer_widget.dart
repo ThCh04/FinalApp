@@ -10,7 +10,9 @@ Widget mainDrawer(BuildContext context){
              children: [
                const Padding(padding:  EdgeInsets.only(top: 100)),
                TextButton(
-                   onPressed: (){},
+                   onPressed: (){
+                     Navigator.of(context).pushReplacementNamed('/fines');
+                   },
                    child: const  Text('Aplicar Multa')
                ),
            TextButton(

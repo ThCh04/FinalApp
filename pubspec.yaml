@@ -39,6 +39,8 @@ dependencies:
   http:
   firebase_core:
   firebase_auth:
+  image_picker:
+  path:
 
 dev_dependencies:
   flutter_test:
