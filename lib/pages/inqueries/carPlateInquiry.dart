@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../services/inqueries_data.dart';
 
 class CarPlateInquiry extends StatelessWidget {
   const CarPlateInquiry({super.key});
@@ -31,7 +32,7 @@ class _TextEditingControllerExampleState
       _controller.value = _controller.value.copyWith(
         text: text,
         selection:
-        TextSelection(baseOffset: text.length, extentOffset: text.length),
+            TextSelection(baseOffset: text.length, extentOffset: text.length),
         composing: TextRange.empty,
       );
     });
@@ -72,6 +73,7 @@ class _TextEditingControllerExampleState
               child: Text("Buscar"),
               onPressed: () => {
                 //Codigo para hacer fetch a la BD
+                getDocumentByTitle(_controller.text)
               },
             ),
           ),
