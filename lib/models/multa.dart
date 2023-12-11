@@ -2,28 +2,39 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 
 class Multa {
   String id;
-  String? nombre; // Puede ser null
-  String? motivo; // Puede ser null
-  String? latitud; // Puede ser null
-  String? longitud; // Puede ser null
-  // Otros campos según necesites
+  String? latitud;
+  String? longitud;
+  String? date;
+  String? desc;
+  String? evidence;
+  String? hour;
+  String? idCard;
+  String? plate;
 
-  Multa(
-      {required this.id,
-      this.nombre,
-      this.motivo,
-      this.latitud,
-      this.longitud});
+  Multa({
+    required this.id,
+    this.latitud,
+    this.longitud,
+    this.date,
+    this.desc,
+    this.evidence,
+    this.hour,
+    this.idCard,
+    this.plate,
+  });
 
   factory Multa.fromFirestore(DocumentSnapshot doc) {
-    Map data = doc.data() as Map;
+    Map<String, dynamic> data = doc.data() as Map<String, dynamic>;
     return Multa(
       id: doc.id,
-      nombre: data['nombre'],
-      motivo: data['motivo'],
-      latitud: data['latitud'],
-      longitud: data['longitud'],
-      // Inicializa otros campos
+      latitud: data['lat'],
+      longitud: data['lon'],
+      date: data['date'],
+      desc: data['desc'],
+      evidence: data['evidence'],
+      hour: data['hour'],
+      idCard: data['idCard'],
+      plate: data['plate'],
     );
   }
 }

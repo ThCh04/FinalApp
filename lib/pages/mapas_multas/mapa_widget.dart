@@ -26,7 +26,7 @@ class _MapaMultasScreenState extends State<MapaMultasScreen> {
         title: Text("Mapa de Multas"),
       ),
       body: StreamBuilder<QuerySnapshot>(
-        stream: FirebaseFirestore.instance.collection('multas').snapshots(),
+        stream: FirebaseFirestore.instance.collection('fines').snapshots(),
         builder: (context, snapshot) {
           if (!snapshot.hasData) return CircularProgressIndicator();
 
@@ -41,7 +41,7 @@ class _MapaMultasScreenState extends State<MapaMultasScreen> {
               markerId: MarkerId(multa.id),
               position: LatLng(latitud, longitud),
               infoWindow:
-                  InfoWindow(title: multa.nombre, snippet: multa.motivo),
+                  InfoWindow(),
             );
           }).toList();
 
