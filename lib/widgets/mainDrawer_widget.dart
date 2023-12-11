@@ -16,11 +16,15 @@ Widget mainDrawer(BuildContext context){
                    child: const  Text('Aplicar Multa')
                ),
            TextButton(
-               onPressed: (){},
+               onPressed: (){
+                 Navigator.of(context).pushReplacementNamed('/license');
+               },
                child: const  Text('Consultar Conductor')
            ),
            TextButton(
-               onPressed: (){},
+               onPressed: (){
+                 Navigator.of(context).pushReplacementNamed('/plate');
+               },
                child: const  Text('Consultar Vehículo')
            ),
            TextButton(

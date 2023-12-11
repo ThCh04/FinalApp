@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import '../../services/inqueries_data.dart';
 
-class CarPlateInquiry extends StatelessWidget {
-  const CarPlateInquiry({super.key});
+class CarPlateInquiryPage extends StatelessWidget {
+  const CarPlateInquiryPage({super.key});
 
   @override
   Widget build(BuildContext context) {

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class LicensedriverInquiry extends StatelessWidget {
-  const LicensedriverInquiry({super.key});
+class LicensedriverInquiryPage extends StatelessWidget {
+  const LicensedriverInquiryPage({super.key});
 
   @override
   Widget build(BuildContext context) {

@@ -41,6 +41,7 @@ dependencies:
   firebase_auth:
   image_picker:
   path:
+  firebase_storage:
 
 dev_dependencies:
   flutter_test:

@@ -1,9 +1,10 @@
+import 'package:finalapp/services/firebase/fines/fines_service.dart';
 import 'package:flutter/material.dart';
 import 'dart:io';
 import 'package:finalapp/widgets/images_widgets.dart';
 import 'package:image_picker/image_picker.dart';
-
 import '../../services/firebase/image/image_service.dart';
+import '../../widgets/mainDrawer_widget.dart';
 class FinesPage extends StatefulWidget{
   const FinesPage({Key? key}) : super(key: key);
 
@@ -14,9 +15,17 @@ class FinesPage extends StatefulWidget{
 class _FinesPageState extends State<FinesPage>{
   File? image_upload;
   late final XFile? image;
+  TextEditingController idCardController = TextEditingController();
+  TextEditingController plateController = TextEditingController();
+  TextEditingController descController = TextEditingController();
+  TextEditingController latController = TextEditingController();
+  TextEditingController lonController = TextEditingController();
+  TextEditingController dateController = TextEditingController();
+  TextEditingController hourController = TextEditingController();
   @override
   Widget build(BuildContext context){
     return Scaffold(
+      drawer: mainDrawer(context),
       appBar: AppBar(
         title: const Text('Aplicar Multa'),
       ),
@@ -44,7 +53,7 @@ class _FinesPageState extends State<FinesPage>{
                   children: [
                     TextFormField(
                       keyboardType: TextInputType.number,
-                      controller: null,
+                      controller: idCardController,
                       decoration:  InputDecoration(
                         hintText: '000-0000000-0', labelText: 'Cedula',
                         border: OutlineInputBorder(
@@ -55,7 +64,7 @@ class _FinesPageState extends State<FinesPage>{
                     const Padding(padding: EdgeInsets.all(5)),
                     TextFormField(
                       keyboardType: TextInputType.number,
-                      controller: null,
+                      controller: plateController,
                       decoration:  InputDecoration(
                         hintText: '000-0000000-0', labelText: 'Placa del vehículo',
                         border: OutlineInputBorder(
@@ -71,7 +80,7 @@ class _FinesPageState extends State<FinesPage>{
                     ),
                     const Padding(padding: EdgeInsets.all(5)),
                     TextFormField(
-                      controller: null,
+                      controller: descController,
                       maxLines: 3,
                       decoration:  InputDecoration(
                         hintText: 'Escribe un comentario', labelText: 'Comentario',
@@ -91,7 +100,7 @@ class _FinesPageState extends State<FinesPage>{
                   width: MediaQuery.of(context).size.width*0.45,
                   child: TextFormField(
                     keyboardType: TextInputType.number,
-                    controller: null,
+                    controller: latController,
                     decoration:  InputDecoration(
                       hintText: '18.7', labelText: 'Latitud',
                       border: OutlineInputBorder(
@@ -105,7 +114,7 @@ class _FinesPageState extends State<FinesPage>{
                   width: MediaQuery.of(context).size.width*0.45,
                   child: TextFormField(
                     keyboardType: TextInputType.number,
-                    controller: null,
+                    controller: lonController,
                     decoration:  InputDecoration(
                       hintText: '-69.6', labelText: 'Longitud',
                       border: OutlineInputBorder(
@@ -124,7 +133,7 @@ class _FinesPageState extends State<FinesPage>{
                   width: MediaQuery.of(context).size.width*0.45,
                   child: TextFormField(
                     keyboardType: TextInputType.number,
-                    controller: null,
+                    controller: dateController,
                     decoration:  InputDecoration(
                       hintText: '01/12/2023', labelText: 'Fecha',
                       border: OutlineInputBorder(
@@ -138,7 +147,7 @@ class _FinesPageState extends State<FinesPage>{
                   width: MediaQuery.of(context).size.width*0.45,
                   child:   TextFormField(
                     keyboardType: TextInputType.number,
-                    controller: null,
+                    controller: hourController,
                     decoration:  InputDecoration(
                       hintText: '18:40', labelText: 'Hora',
                       border: OutlineInputBorder(
@@ -156,7 +165,11 @@ class _FinesPageState extends State<FinesPage>{
                 children: [
                   Expanded(
                     child: ElevatedButton(
-                      onPressed: (){},
+                      onPressed: () async {
+                        await submit(idCardController.text, plateController.text, image_upload,
+                            descController.text, latController.text, lonController.text, dateController.text,
+                            hourController.text);
+                      },
                       child: const Text('Multar'),
 
                     ),
@@ -169,6 +182,11 @@ class _FinesPageState extends State<FinesPage>{
       ),
     );
   }
+
+  Future<void> submit(String? idCard, String? plate, File? evidence,String? desc, String? lat, String? lon,
+      String? date, String? hour) async{
+    await uploadImage(evidence!, 'evidence').then((url) => addFine(idCard!, plate!, url!, desc!, lat!, lon!, date!, hour!));
+  }
   SizedBox _imgBtn() {
     return SizedBox(
       width: MediaQuery.of(context).size.width*0.3,
@@ -178,7 +196,6 @@ class _FinesPageState extends State<FinesPage>{
           setState(() {
             image_upload = File(image!.path);
           });
-
         },
         child: const Text('Subir Imagen'),
       ),

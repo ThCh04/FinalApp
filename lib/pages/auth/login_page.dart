@@ -1,6 +1,5 @@
 import 'package:finalapp/services/firebase/auth/login_service.dart';
 import 'package:flutter/material.dart';
-import 'package:finalapp/routes.dart';
 class LoginView extends StatelessWidget {
   const LoginView({Key? key}): super(key: key);
 
