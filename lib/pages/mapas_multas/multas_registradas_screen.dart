@@ -3,7 +3,13 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:finalapp/models/multa.dart';
 
-class MultasRegistradasScreen extends StatelessWidget {
+class MultasRegistradasScreen extends StatefulWidget {
+  @override
+  _MultasRegistradasScreenState createState() =>
+      _MultasRegistradasScreenState();
+}
+
+class _MultasRegistradasScreenState extends State<MultasRegistradasScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -33,11 +39,43 @@ class MultasRegistradasScreen extends StatelessWidget {
                 subtitle: Text(multa.motivo ?? 'Sin motivo'),
                 onTap: () {
                   // Navega a la pantalla de detalles de la multa
+                  _navigateToDetallesMulta(multa);
                 },
               );
             },
           );
         },
+      ),
+    );
+  }
+
+  void _navigateToDetallesMulta(Multa multa) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => DetallesMultaScreen(multa: multa),
+      ),
+    );
+  }
+}
+
+class DetallesMultaScreen extends StatelessWidget {
+  final Multa multa;
+
+  const DetallesMultaScreen({required this.multa});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Detalles de Multa'),
+      ),
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Text('Nombre: ${multa.nombre}'),
+          Text('Motivo: ${multa.motivo}'),
+        ],
       ),
     );
   }
