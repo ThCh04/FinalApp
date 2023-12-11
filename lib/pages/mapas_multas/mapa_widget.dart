@@ -48,8 +48,8 @@ class _MapaMultasScreenState extends State<MapaMultasScreen> {
           return GoogleMap(
             onMapCreated: _onMapCreated,
             initialCameraPosition: CameraPosition(
-              target: LatLng(0, 0),
-              zoom: 2,
+              target: LatLng(18.7357, -70.1627), // Coordenadas aproximadas de la República Dominicana
+              zoom: 7,
             ),
             markers: Set.from(markers),
           );
