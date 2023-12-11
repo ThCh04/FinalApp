@@ -23,6 +23,33 @@ class TextEditingControllerScreen extends StatefulWidget {
 class _TextEditingControllerExampleState
     extends State<TextEditingControllerScreen> {
   final TextEditingController _controller = TextEditingController();
+  String plate = "";
+  String model = "";
+  String brand = "";
+  String year = "";
+  String color = "";
+
+  Future<void> _fetchData() async {
+    var document = await getDocumentByTitle(_controller.text);
+    if (document != null) {
+      setState(() {
+        plate = document['plate'] ?? '';
+        model = document['model'] ?? '';
+        brand = document['brand'] ?? '';
+        year = document['year'] ?? '';
+        color = document['color'] ?? '';
+      });
+    } else {
+      // Manejo si no se encuentra el documento
+      setState(() {
+        plate = '';
+        model = '';
+        brand = '';
+        year = '';
+        color = '';
+      });
+    }
+  }
 
   @override
   void initState() {
@@ -32,7 +59,7 @@ class _TextEditingControllerExampleState
       _controller.value = _controller.value.copyWith(
         text: text,
         selection:
-            TextSelection(baseOffset: text.length, extentOffset: text.length),
+        TextSelection(baseOffset: text.length, extentOffset: text.length),
         composing: TextRange.empty,
       );
     });
@@ -50,15 +77,15 @@ class _TextEditingControllerExampleState
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
-          //ListView.builder(
-          //itemCount: variable.length,
-          //itemBuilder: (context, index) {
-          //return ListTile(
-          //title: Text(),
-
-          //);
-          //},
-          //),
+          Container(
+            child: Row(children: <Widget>[
+              Text('Placa: $plate'),
+              Text('Modelo: $model'),
+              Text('Marca: $brand'),
+              Text('Año: $year'),
+              Text('Color: $color'),
+            ]),
+          ),
           Container(
             alignment: Alignment.center,
             padding: const EdgeInsets.all(6),
@@ -73,7 +100,8 @@ class _TextEditingControllerExampleState
               child: Text("Buscar"),
               onPressed: () => {
                 //Codigo para hacer fetch a la BD
-                getDocumentByTitle(_controller.text)
+                //getDocumentByTitle(_controller.text),
+                _fetchData()
               },
             ),
           ),

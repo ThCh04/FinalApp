@@ -23,6 +23,36 @@ class TextEditingControllerScreen extends StatefulWidget {
 class _TextEditingControllerExampleState
     extends State<TextEditingControllerScreen> {
   final TextEditingController _controller = TextEditingController();
+  String drivers_license = "";
+  String owner_name = "";
+  String owner_lastname = "";
+  String owner_birthdate = "";
+  String owner_address = "";
+  String owner_phonenumbe = "";
+
+  Future<void> _fetchData() async {
+    var document = await getDocumentByTitle(_controller.text);
+    if (document != null) {
+      setState(() {
+        drivers_license = document['drivers_license'] ?? '';
+        owner_name = document['owner_name'] ?? '';
+        owner_lastname = document['owner_lastname'] ?? '';
+        owner_birthdate = document['owner_birthdate'] ?? '';
+        owner_address = document['owner_address'] ?? '';
+        owner_phonenumbe = document['owner_phonenumber'] ?? '';
+      });
+    } else {
+      // Manejo si no se encuentra el documento
+      setState(() {
+        drivers_license = '';
+        owner_name = '';
+        owner_lastname = '';
+        owner_birthdate = '';
+        owner_address = '';
+        owner_phonenumbe = '';
+      });
+    }
+  }
 
   @override
   void initState() {
@@ -32,7 +62,7 @@ class _TextEditingControllerExampleState
       _controller.value = _controller.value.copyWith(
         text: text,
         selection:
-            TextSelection(baseOffset: text.length, extentOffset: text.length),
+        TextSelection(baseOffset: text.length, extentOffset: text.length),
         composing: TextRange.empty,
       );
     });
@@ -50,15 +80,15 @@ class _TextEditingControllerExampleState
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
-          //ListView.builder(
-          //itemCount: variable.length,
-          //itemBuilder: (context, index) {
-          //return ListTile(
-          //title: Text(),
-
-          //);
-          //},
-          //),
+          Container(
+              child: Row(children: <Widget>[
+                Text('Licencia: $drivers_license'),
+                Text('Nombre: $owner_name'),
+                Text('Apellido: $owner_lastname'),
+                Text('Fecha de nacimiento: $owner_birthdate'),
+                Text('Direccion: $owner_address'),
+                Text('Tel: $owner_phonenumbe'),
+              ])),
           Container(
             alignment: Alignment.center,
             padding: const EdgeInsets.all(6),
@@ -73,7 +103,8 @@ class _TextEditingControllerExampleState
               child: Text("Buscar"),
               onPressed: () => {
                 //Codigo para hacer fetch a la BD
-                getDriverByTitle(_controller.text)
+                //getDriverByTitle(_controller.text)
+                _fetchData()
               },
             ),
           ),
